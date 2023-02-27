@@ -78,12 +78,14 @@ if jmeno in registr_uzivatele.keys() and heslo == registr_uzivatele[jmeno]:
             vysledky["num slov"] += 1
     # SČÍTÁNÍ HLEDANÝCH HODNOT       
         for slovo in analyzovany_text:
-            if slovo.istitle():
-                vysledky["title"] += 1
-            elif slovo.isupper():
-                vysledky["upper"] += 1
-            elif slovo.islower():
-                vysledky["lower"] += 1
+            if slovo.isalpha():
+                if slovo.istitle():
+                    vysledky["title"] += 1
+                elif slovo.isupper():
+                    vysledky["upper"] += 1
+                    vysledky["title"] += 1
+                elif slovo.islower():
+                    vysledky["lower"] += 1
             elif slovo.isdigit():
                 vysledky["num čísel"] += 1
                 vysledky["suma čísel"] += int(slovo)
